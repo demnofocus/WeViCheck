@@ -1,0 +1,30 @@
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+@mixin respond($bp) {
+  @if $bp == bp-largest {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $bp == bp-large {
+    @media only screen and (max-width: 62.5em) {
+      @content;
+    }
+  }
+  @if $bp == bp-medium {
+    @media only screen and (max-width: 50em) {
+      @content;
+    }
+  }
+  @if $bp == bp-small {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+}

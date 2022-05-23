@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  @include respond(bp-large) {
+    font-size: 50%;
+  }
+}
+
+body {
+  height: 100vh;
+  background-color: #edf2ff;
+}
+
+::selection {
+  background-color: var(--color-grey-dark-2);
+  color: var(--color-white);
+}

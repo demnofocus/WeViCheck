@@ -1,0 +1,48 @@
+.u-center {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.u-center-mid {
+  max-width: 150rem;
+  margin: 0 auto;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+
+.u-margin-bottom-large {
+  margin-bottom: 6rem;
+}
+
+.u-margin-right-small {
+  margin-right: 2rem;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.u-padding-sides-small {
+  padding: 0 2rem;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+}

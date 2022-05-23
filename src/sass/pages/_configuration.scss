@@ -1,0 +1,121 @@
+.binary-image,
+.detected-image {
+  width: 100%;
+}
+
+.images {
+  display: flex;
+  gap: 5rem;
+  margin: 2rem 0;
+}
+
+// .form--paras,
+// .form--tests {
+// }
+
+.form--tests,
+.form--paras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 50rem;
+}
+
+.btn--config {
+  margin-top: 2rem;
+  grid-column: 1/-1;
+  letter-spacing: 0.5rem;
+}
+
+.section--tests {
+  margin-bottom: 3rem;
+}
+
+.main--config {
+  margin-top: 3rem;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+}
+
+.slider input {
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.slider input::-webkit-slider-runnable-track {
+  background-color: var(--color-grey-dark-2);
+  border-radius: 0.2rem;
+}
+
+.slider input::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--color-secondary);
+  transition: all 0.5s;
+}
+
+.slider input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider label {
+  position: absolute;
+  right: -5rem;
+  top: -0.4rem;
+  color: var(--color-secondary);
+}
+
+.form__checkbox {
+  display: none;
+}
+
+.form__checkbox + label {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid var(--color-secondary);
+  position: relative;
+  border-radius: 0.2rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.form__checkbox:checked + label {
+  background-color: var(--color-secondary);
+  transform: scale(1.2);
+}
+
+.input--photo {
+  display: none;
+}
+
+.input--photo + label {
+  width: 80%;
+  height: 120%;
+  border: 2px solid var(--color-grey-dark-2);
+  justify-self: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.input--photo + label:hover {
+  background-color: var(--color-grey-dark-2);
+  color: var(--color-white);
+}
+
+.input--photo + label::before {
+  content: "upload";
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

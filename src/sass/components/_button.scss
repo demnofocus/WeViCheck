@@ -1,0 +1,43 @@
+%btn-placeholder {
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  text-transform: uppercase;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn {
+  @extend %btn-placeholder;
+  padding: 1.5rem 2.5rem;
+  border-radius: 0.5rem;
+  border: 0.3rem solid currentColor;
+  transition: all 0.5s;
+  position: relative;
+  text-decoration: none;
+
+  &--blue {
+    background-color: var(--color-secondary);
+  }
+
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    background-color: var(--color-primary);
+    transition: all 0.5s;
+    z-index: -1;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}

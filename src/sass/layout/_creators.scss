@@ -1,0 +1,37 @@
+.creators {
+  &__creator {
+    display: flex;
+    gap: 2rem;
+
+    @include respond(bp-medium) {
+      flex-direction: column;
+    }
+  }
+
+  &__heading-sub {
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    display: inline-block;
+    padding: 0 1rem;
+  }
+
+  // &__detail {
+  // }
+
+  &__heading {
+    font-size: 5rem;
+    span {
+      color: var(--color-primary);
+    }
+  }
+
+  &__img {
+    flex: 0 0 40%;
+    img {
+      width: 100%;
+      border-radius: 2rem;
+    }
+  }
+}

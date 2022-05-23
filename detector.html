@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script defer src="src/js/controller.js" type="module"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <title>WeViCheck</title>
+  </head>
+  <body>
+    <div class="nav detector__nav">
+      <div class="logo">
+        <span>WeViCheck</span>
+      </div>
+    </div>
+
+    <main class="content">
+      <div class="sidebar-menu">
+        <div class="sidebar__file">
+          <input type="file" id="file" />
+          <label for="file"> upload </label>
+        </div>
+        <li><h2 class="sidebar__heading">Results</h2></li>
+        <button class="sidebar__btn">Screenshot 1</button>
+        <ul class="sidebar__list sidebar__list--menu">
+          <li class="sidebar__item--btn">
+            <button>
+              <svg class="sidebar__icon">
+                <use href="./src/img/sprite.svg#icon-tick"></use>
+              </svg>
+              Layout
+            </button>
+          </li>
+          <li class="sidebar__item--btn">
+            <button>
+              <svg class="sidebar__icon">
+                <use href="./src/img/sprite.svg#icon-tick"></use>
+              </svg>
+              Alignment
+            </button>
+          </li>
+          <li class="sidebar__item--btn">
+            <button>
+              <svg class="sidebar__icon">
+                <use href="./src/img/sprite.svg#icon-tick"></use>
+              </svg>
+              text contrast
+            </button>
+          </li>
+          <li class="sidebar__item--btn">
+            <button>
+              <svg class="sidebar__icon">
+                <use href="./src/img/sprite.svg#icon-tick"></use>
+              </svg>
+              spelling
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="screenshot">
+        <img src="src/img/screenshot.png" alt="" />
+      </div>
+
+      <div class="sidebar-defects">
+        <ul class="sidebar__list sidebar__list--defects">
+          <li>
+            <button class="sidebar__btn">Defect 1</button>
+          </li>
+          <div class="sidebar-defects__defect">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              ducimus similique in laudantium quia minima temporibus, assumenda,
+              nesciunt illo fuga tenetur, asperiores quae placeat rerum? Unde
+              minima impedit porro in!
+            </p>
+          </div>
+          <li>
+            <button class="sidebar__btn">Defect 2</button>
+          </li>
+          <div class="sidebar-defects__defect">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              ducimus similique in laudantium quia minima temporibus, assumenda,
+              nesciunt illo fuga tenetur, asperiores quae placeat rerum? Unde
+              minima impedit porro in!
+            </p>
+          </div>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

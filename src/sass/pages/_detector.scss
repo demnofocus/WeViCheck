@@ -1,0 +1,27 @@
+.detector {
+  &__nav {
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 25rem 1fr 30rem;
+  height: calc(100vh - 7rem);
+
+  @include respond(bp-large) {
+    grid-template-columns: 25rem 1fr 20rem;
+  }
+
+  @include respond(bp-medium) {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content 50vh;
+  }
+}
+
+.screenshot {
+  padding: 2rem;
+  overflow: scroll;
+  img {
+    width: 100%;
+  }
+}

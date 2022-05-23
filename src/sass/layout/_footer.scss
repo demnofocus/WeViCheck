@@ -1,0 +1,20 @@
+.footer {
+  color: var(--color-white);
+  background-color: var(--color-grey-dark-2);
+
+  .logo {
+    padding: 5rem 0;
+    font-size: 2.5rem;
+  }
+
+  .copyright {
+    text-align: center;
+
+    p {
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-size: 1.4rem;
+      color: var(--color-grey-dark-1);
+    }
+  }
+}

@@ -1,0 +1,120 @@
+.hero {
+  height: 70vh;
+  position: relative;
+  margin-bottom: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include respond(bp-small) {
+    background-color: var(--color-grey-dark-2);
+    height: calc(100vh - 7rem);
+    align-items: flex-start;
+    padding-top: 3rem;
+  }
+
+  &__header {
+    color: var(--color-white);
+    max-height: 40rem;
+    max-width: 90rem;
+    font-weight: 100;
+    background: linear-gradient(
+      to left bottom,
+      rgba($color-primary, 0.5) 50%,
+      transparent 50%
+    );
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: $shadow-dark-1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 3rem;
+
+    @include respond(bp-large) {
+      max-height: 100%;
+    }
+
+    @include respond(bp-small) {
+      max-width: 100%;
+      flex-direction: column-reverse;
+      gap: 5rem;
+    }
+  }
+
+  &__heading {
+    flex: 0 0 30%;
+    height: 60%;
+    color: var(--color-white);
+    display: grid;
+    grid-template-columns: min-content min-content;
+    text-transform: uppercase;
+    position: relative;
+
+    @include respond(bp-small) {
+      grid-template-columns: repeat(4, min-content);
+      gap: 2rem;
+    }
+
+    &-w,
+    &-v,
+    &-i,
+    &-e {
+      font-size: 8rem;
+      animation: visibleScale 1s 0.5s;
+      animation-fill-mode: backwards;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+
+      @include respond(bp-small) {
+        font-size: 5rem;
+      }
+    }
+
+    &-check {
+      font-size: 5rem;
+      grid-column: 1/-1;
+      margin-left: 2rem;
+      border: 0.5rem solid var(--color-white);
+      letter-spacing: 1rem;
+      text-justify: distribute;
+    }
+  }
+
+  &::before {
+    content: "";
+    height: 80vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-grey-dark-2);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 65%);
+    z-index: -1;
+
+    @include respond(bp-small) {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: "";
+    height: 80vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-dark);
+
+    clip-path: polygon(0 0, 00% 0, 100% 50%, 0 100%);
+    z-index: -2;
+
+    @include respond(bp-small) {
+      display: none;
+    }
+  }
+}

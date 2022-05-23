@@ -1,0 +1,22 @@
+.section {
+  &--about {
+    margin-bottom: 15rem;
+    padding: 0 3rem;
+  }
+
+  &--steps {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary),
+      var(--color-primary-dark)
+    );
+    transform: translateY(-28rem);
+    margin-bottom: -10rem;
+    padding: 0 3rem;
+  }
+
+  &--creators {
+    margin-bottom: 15rem;
+    padding: 0 5rem;
+  }
+}

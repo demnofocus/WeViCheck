@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script defer src="src/js/controller.js" type="module"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <title>Configure</title>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="logo">
+        <span>WeViCheck</span>
+      </div>
+
+      <input type="checkbox" id="navbox" class="navbox" />
+      <label class="nav__menu" for="navbox">
+        <div class="nav__icon"></div>
+      </label>
+
+      <div class="nav__background"></div>
+
+      <div class="nav__list">
+        <li><a class="nav__link" href="#">Configure</a></li>
+        <li><a class="nav__link" href="#">Home</a></li>
+      </div>
+    </div>
+
+    <main class="main--config">
+      <section class="section--configure" id="configure">
+        <div class="u-center-mid">
+          <h4 class="heading-sub u-margin-bottom-small">Configure</h4>
+          <div class="nav__list">
+            <li>
+              <a class="nav__link" href="#parameters">Select Parameters</a>
+            </li>
+            <li><a class="nav__link" href="#tests">Select Tests</a></li>
+          </div>
+        </div>
+      </section>
+      <section class="section--parameters" id="parameters">
+        <div class="u-center-mid">
+          <h2 class="heading-secondary u-margin-bottom-small">
+            Select Parameters
+          </h2>
+          <div>
+            <form
+              class="form--paras"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <!--                    th:object="${webPage}" -->
+              <label for="sample-image">Sample Screenshot</label>
+              <input
+                class="input--photo"
+                type="file"
+                name="image"
+                accept="image/jpeg, image/png"
+                id="sample-image"
+              />
+              <label for="sample-image"></label>
+
+              <label for="binary-grad">Binary Gradient</label>
+
+              <div class="slider">
+                <input
+                  type="range"
+                  name="binaryGradient"
+                  min="1"
+                  max="100"
+                  value="50"
+                  id="binary-grad"
+                />
+                <label for="binary-grad">50</label>
+              </div>
+
+              <label for="min-area">Minimum Element Area</label>
+
+              <div class="slider">
+                <input
+                  type="range"
+                  name="elementArea"
+                  min="1"
+                  max="100"
+                  value="50"
+                  id="min-area"
+                />
+                <label for="binary-grad">50</label>
+              </div>
+
+              <button class="btn btn--blue btn--config">Detect</button>
+              <!--                        <div>-->
+              <!--                            <a class="btn" th:href="@{/detector}">Detector</a>-->
+              <!--                        </div>-->
+            </form>
+            <div class="images">
+              <div class="binary-image-space hidden">
+                <img class="binary-image" alt="binary image" />
+                <p>Binary image</p>
+              </div>
+              <div class="detected-image-space hidden">
+                <img class="detected-image" alt="detected image" />
+                <p>Detected image</p>
+              </div>
+            </div>
+          </div>
+          <!--                <div>-->
+          <!--                    <button class="btn u-margin-right-small">Check</button>-->
+          <!--                    <a href="#tests">Next</a>-->
+          <!--                </div>-->
+        </div>
+      </section>
+
+      <section class="section--tests" id="tests">
+        <div class="u-center-mid">
+          <h2 class="heading-secondary">Select Tests</h2>
+
+          <div>
+            <form class="form--tests" method="post">
+              <label for="test1">Layout</label>
+              <input
+                class="form__checkbox"
+                type="checkbox"
+                id="test1"
+                name="layout"
+                value="true"
+              />
+              <label for="test1"></label>
+
+              <label for="test2">Alignment</label>
+              <input
+                class="form__checkbox"
+                type="checkbox"
+                id="test2"
+                name="alignment"
+                value="true"
+              />
+              <label for="test2"></label>
+
+              <label for="test3">Text</label>
+              <input
+                class="form__checkbox"
+                type="checkbox"
+                id="test3"
+                name="text"
+                value="true"
+              />
+              <label for="test3"></label>
+
+              <label for="test4">Colour</label>
+              <input
+                class="form__checkbox"
+                type="checkbox"
+                id="test4"
+                name="colour"
+                value="true"
+              />
+              <label for="test4"></label>
+
+              <button class="btn btn--blue btn--config">Detect</button>
+              <!--                        <div>-->
+              <!--                            <a class="btn" th:href="@{/detector}">Detector</a>-->
+              <!--                        </div>-->
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="logo u-text-center">
+          <span>WeViCheck</span>
+        </div>
+        <div class="copyright">
+          <p>Copyright &copy; WeViCheck</p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
