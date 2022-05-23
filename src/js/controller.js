@@ -25,11 +25,11 @@ if (formParas) {
         }),
       });
       const data = await res.json();
-
-      binaryImage.classList.remove("hidden");
-      detectedImage.classList.remove("hidden");
-      binaryImageSpace.src = data.binay_img;
-      detectedImageSpace.src = data.detected_img;
+      
+      binaryImageSpace.classList.remove("hidden");
+      detectedImageSpace.classList.remove("hidden");
+      binaryImage.src = data.binay_img;
+      detectedImage.src = data.detected_img;
 
       // const img = document.createElement("img");
       // img.src = this.result;
