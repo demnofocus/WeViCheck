@@ -28,7 +28,7 @@ if (formParas) {
       
       binaryImageSpace.classList.remove("hidden");
       detectedImageSpace.classList.remove("hidden");
-      binaryImage.src = data.binay_img;
+      binaryImage.src = data.binary_img;
       detectedImage.src = data.detected_img;
 
       // const img = document.createElement("img");

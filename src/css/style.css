@@ -197,11 +197,12 @@ body {
         .hero__heading span {
           font-size: 5rem; } }
     .hero__heading-check {
+      padding: 3px;
       font-size: 5rem;
       grid-column: 1/-1;
       margin-left: 2rem;
       border: 0.5rem solid var(--color-white);
-      letter-spacing: 1rem;
+      letter-spacing: 2rem;
       text-justify: distribute; }
   .hero::before {
     content: "";
@@ -449,7 +450,8 @@ body {
 .creators__img {
   flex: 0 0 40%; }
   .creators__img img {
-    width: 100%;
+    height: 250px;
+    width: 250px;
     border-radius: 2rem; }
 
 .footer {
@@ -487,16 +489,16 @@ body {
       .steps__header {
         position: relative; } }
   .steps__number {
-    font-size: 5rem;
+    font-size: 3rem;
     position: relative;
     z-index: 1;
-    margin-bottom: 3rem;
-    margin-left: 3rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     display: inline-block; }
     .steps__number::before {
       content: "";
-      height: 10rem;
-      width: 10rem;
+      height: 5rem;
+      width: 5rem;
       position: absolute;
       top: 50%;
       left: 50%;
