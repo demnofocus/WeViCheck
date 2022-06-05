@@ -9,6 +9,8 @@ const binaryImage = document.querySelector(".binary-image");
 const detectedImage = document.querySelector(".detected-image");
 const loadingIcon = document.querySelector(".loading-icon");
 
+const upload = document.querySelector(".sidebar__file input");
+
 if (formParas) {
   formParas.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -48,4 +50,31 @@ if (sliders) {
       label.innerHTML = this.value;
     });
   });
+}
+
+if (formTests) {
+  formTests.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const checkboxes = document.querySelectorAll(".form__checkbox");
+    const values = [...checkboxes].map((checkbox) => checkbox.checked);
+
+    const res = await fetch("http://127.0.0.1:5000/select_tests", {
+      method: "POST",
+      body: JSON.stringify({
+        layout: values[0],
+        alignment: values[1],
+        text_contrast: values[2],
+        spelling: values[3],
+        images: values[4],
+      }),
+    });
+
+    const data = await res.json();
+    if (data.status === "success")
+      location.assign("http://127.0.0.1:5501/detector.html");
+  });
+}
+
+if (upload) {
 }
