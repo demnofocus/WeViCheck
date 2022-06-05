@@ -10,6 +10,9 @@ const detectedImage = document.querySelector(".detected-image");
 const loadingIcon = document.querySelector(".loading-icon");
 
 const upload = document.querySelector(".sidebar__file input");
+let reports;
+const testSelections = document.querySelector(".sidebar__list");
+const report = document.querySelector(".report");
 
 if (formParas) {
   formParas.addEventListener("submit", function (e) {
@@ -77,4 +80,38 @@ if (formTests) {
 }
 
 if (upload) {
+  upload.addEventListener("change", function (e) {
+    const FR = new FileReader();
+    FR.readAsDataURL(this.files[0]);
+    console.log(this.files[0]);
+
+    FR.addEventListener("load", async function (e) {
+      try {
+        const res = await fetch("http://127.0.0.1:5000/ui_check", {
+          method: "POST",
+          body: JSON.stringify({
+            image: this.result,
+          }),
+        });
+
+        const data = await res.json();
+        console.log(data);
+        reports = data.image_test;
+        console.log(reports);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+}
+
+if (testSelections) {
+  testSelections.addEventListener("click", function (e) {
+    if (!reports) return;
+
+    const id = e.target.id;
+    if (id === "images_btn") {
+      report.src = reports.image;
+    }
+  });
 }
