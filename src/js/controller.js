@@ -10,7 +10,12 @@ const detectedImage = document.querySelector(".detected-image");
 const loadingIcon = document.querySelector(".loading-icon");
 
 const upload = document.querySelector(".sidebar__file input");
-let reports;
+let report_data;
+let layout_report;
+let alignment_report;
+let contrast_report;
+let spelling_report;
+let image_report;
 const testSelections = document.querySelector(".sidebar__list");
 const report = document.querySelector(".report");
 
@@ -94,9 +99,15 @@ if (upload) {
           }),
         });
 
-        const data = await res.json();
-        console.log(data);
-        reports = data.image_test;
+        report_data = await res.json();
+        console.log(report_data);
+
+        layout_report = data.layout_test;
+        alignment_report = data.alignment_test;
+        contrast_report = data.contrast_test;
+        spelling_report = data.spelling_test;
+        image_report = data.image_test;
+
         console.log(reports);
       } catch (err) {
         console.error(err);
@@ -107,11 +118,19 @@ if (upload) {
 
 if (testSelections) {
   testSelections.addEventListener("click", function (e) {
-    if (!reports) return;
+    if (!report_data) return;
 
     const id = e.target.id;
-    if (id === "images_btn") {
-      report.src = reports.image;
+    if (id === "layout_btn") {
+      report.src = layout_report.image;
+    } else if (id === "alignment_btn") {
+      report.src = alignment_report.row_center;
+    } else if (id === "contrast_btn") {
+      report.src = contrast_report.image;
+    } else if (id === "spelling_btn") {
+      report.src = spelling_report.image;
+    } else if (id === "images_btn") {
+      report.src = image_report.image;
     }
   });
 }
