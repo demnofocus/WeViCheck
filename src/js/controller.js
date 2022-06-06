@@ -28,22 +28,25 @@ if (formParas) {
 
     FR.addEventListener("load", async function (e) {
       loadingIcon.classList.remove("hidden");
-      const res = await fetch("http://127.0.0.1:5000/test_parameters", {
-        method: "POST",
-        body: JSON.stringify({
-          image: this.result,
-          bin_grad: sliders[0].value,
-          min_ele_area: sliders[1].value,
-        }),
-      });
-      const data = await res.json();
+      try {
+        const res = await fetch("http://127.0.0.1:5000/test_parameters", {
+          method: "POST",
+          body: JSON.stringify({
+            image: this.result,
+            bin_grad: sliders[0].value,
+            min_ele_area: sliders[1].value,
+          }),
+        });
+        const data = await res.json();
 
-      loadingIcon.classList.add("hidden");
-      binaryImageSpace.classList.remove("hidden");
-      detectedImageSpace.classList.remove("hidden");
-      binaryImage.src = data.binary_img;
-      detectedImage.src = data.detected_img;
-
+        loadingIcon.classList.add("hidden");
+        binaryImageSpace.classList.remove("hidden");
+        detectedImageSpace.classList.remove("hidden");
+        binaryImage.src = data.binary_img;
+        detectedImage.src = data.detected_img;
+      } catch (err) {
+        console.error(err);
+      }
       // const img = document.createElement("img");
       // img.src = this.result;
       // document.body.append(img);
@@ -67,20 +70,24 @@ if (formTests) {
     const checkboxes = document.querySelectorAll(".form__checkbox");
     const values = [...checkboxes].map((checkbox) => checkbox.checked);
 
-    const res = await fetch("http://127.0.0.1:5000/select_tests", {
-      method: "POST",
-      body: JSON.stringify({
-        layout: values[0],
-        alignment: values[1],
-        text_contrast: values[2],
-        spelling: values[3],
-        images: values[4],
-      }),
-    });
+    try {
+      const res = await fetch("http://127.0.0.1:5000/select_tests", {
+        method: "POST",
+        body: JSON.stringify({
+          layout: values[0],
+          alignment: values[1],
+          text_contrast: values[2],
+          spelling: values[3],
+          images: values[4],
+        }),
+      });
 
-    const data = await res.json();
-    if (data.status === "success")
-      location.assign("http://127.0.0.1:5501/detector.html");
+      const data = await res.json();
+      if (data.status === "success")
+        location.assign("http://127.0.0.1:5501/detector.html");
+    } catch (err) {
+      console.error(err);
+    }
   });
 }
 
