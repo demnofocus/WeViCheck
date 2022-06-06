@@ -102,13 +102,11 @@ if (upload) {
         report_data = await res.json();
         console.log(report_data);
 
-        layout_report = data.layout_test;
-        alignment_report = data.alignment_test;
-        contrast_report = data.contrast_test;
-        spelling_report = data.spelling_test;
-        image_report = data.image_test;
-
-        console.log(reports);
+        layout_report = report_data.layout_test;
+        alignment_report = report_data.alignment_test;
+        contrast_report = report_data.contrast_test;
+        spelling_report = report_data.spelling_test;
+        image_report = report_data.image_test;
       } catch (err) {
         console.error(err);
       }
