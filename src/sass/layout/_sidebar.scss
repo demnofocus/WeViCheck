@@ -113,15 +113,15 @@
         }
       }
 
-      &:hover + .sidebar-defects__defect {
+      &:hover + .sidebar-defects__defect:not(.active) {
         height: 2rem;
-      }
-
-      &:active + .sidebar-defects__defect {
-        height: 20rem;
-        opacity: 1;
-        transform: scale(1);
       }
     }
   }
+}
+
+.sidebar-defects__defect.active {
+  height: 20rem;
+  opacity: 1;
+  transform: scale(1);
 }

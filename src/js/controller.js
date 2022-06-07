@@ -1,36 +1,37 @@
-const formParas = document.querySelector(".form--paras");
-const formTests = document.querySelector(".form--tests");
+const formParas = document.querySelector('.form--paras');
+const formTests = document.querySelector('.form--tests');
 
-const sliders = document.querySelectorAll(".slider input");
-const photo = document.querySelector(".input--photo");
-const binaryImageSpace = document.querySelector(".binary-image-space");
-const detectedImageSpace = document.querySelector(".detected-image-space");
-const binaryImage = document.querySelector(".binary-image");
-const detectedImage = document.querySelector(".detected-image");
-const loadingIcon = document.querySelector(".loading-icon");
+const sliders = document.querySelectorAll('.slider input');
+const photo = document.querySelector('.input--photo');
+const binaryImageSpace = document.querySelector('.binary-image-space');
+const detectedImageSpace = document.querySelector('.detected-image-space');
+const binaryImage = document.querySelector('.binary-image');
+const detectedImage = document.querySelector('.detected-image');
+const loadingIcon = document.querySelector('.loading-icon');
+const sidebarDefects = document.querySelector('.sidebar-defects');
 
-const upload = document.querySelector(".sidebar__file input");
+const upload = document.querySelector('.sidebar__file input');
 let report_data;
 let layout_report;
 let alignment_report;
 let contrast_report;
 let spelling_report;
 let image_report;
-const testSelections = document.querySelector(".sidebar__list");
-const report = document.querySelector(".report");
+const testSelections = document.querySelector('.sidebar__list');
+const report = document.querySelector('.report');
 
 if (formParas) {
-  formParas.addEventListener("submit", function (e) {
+  formParas.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const FR = new FileReader();
     FR.readAsDataURL(photo.files[0]);
 
-    FR.addEventListener("load", async function (e) {
-      loadingIcon.classList.remove("hidden");
+    FR.addEventListener('load', async function (e) {
+      loadingIcon.classList.remove('hidden');
       try {
-        const res = await fetch("http://127.0.0.1:5000/test_parameters", {
-          method: "POST",
+        const res = await fetch('http://127.0.0.1:5000/test_parameters', {
+          method: 'POST',
           body: JSON.stringify({
             image: this.result,
             bin_grad: sliders[0].value,
@@ -39,9 +40,9 @@ if (formParas) {
         });
         const data = await res.json();
 
-        loadingIcon.classList.add("hidden");
-        binaryImageSpace.classList.remove("hidden");
-        detectedImageSpace.classList.remove("hidden");
+        loadingIcon.classList.add('hidden');
+        binaryImageSpace.classList.remove('hidden');
+        detectedImageSpace.classList.remove('hidden');
         binaryImage.src = data.binary_img;
         detectedImage.src = data.detected_img;
       } catch (err) {
@@ -55,8 +56,8 @@ if (formParas) {
 }
 
 if (sliders) {
-  sliders.forEach((slider) => {
-    slider.addEventListener("input", function (e) {
+  sliders.forEach(slider => {
+    slider.addEventListener('input', function (e) {
       const label = this.nextElementSibling;
       label.innerHTML = this.value;
     });
@@ -64,15 +65,15 @@ if (sliders) {
 }
 
 if (formTests) {
-  formTests.addEventListener("submit", async function (e) {
+  formTests.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const checkboxes = document.querySelectorAll(".form__checkbox");
-    const values = [...checkboxes].map((checkbox) => checkbox.checked);
+    const checkboxes = document.querySelectorAll('.form__checkbox');
+    const values = [...checkboxes].map(checkbox => checkbox.checked);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/select_tests", {
-        method: "POST",
+      const res = await fetch('http://127.0.0.1:5000/select_tests', {
+        method: 'POST',
         body: JSON.stringify({
           layout: values[0],
           alignment: values[1],
@@ -83,8 +84,8 @@ if (formTests) {
       });
 
       const data = await res.json();
-      if (data.status === "success")
-        location.assign("http://127.0.0.1:5501/detector.html");
+      if (data.status === 'success')
+        location.assign('http://127.0.0.1:5501/detector.html');
     } catch (err) {
       console.error(err);
     }
@@ -92,15 +93,15 @@ if (formTests) {
 }
 
 if (upload) {
-  upload.addEventListener("change", function (e) {
+  upload.addEventListener('change', function (e) {
     const FR = new FileReader();
     FR.readAsDataURL(this.files[0]);
     console.log(this.files[0]);
 
-    FR.addEventListener("load", async function (e) {
+    FR.addEventListener('load', async function (e) {
       try {
-        const res = await fetch("http://127.0.0.1:5000/ui_check", {
-          method: "POST",
+        const res = await fetch('http://127.0.0.1:5000/ui_check', {
+          method: 'POST',
           body: JSON.stringify({
             image: this.result,
           }),
@@ -122,20 +123,29 @@ if (upload) {
 }
 
 if (testSelections) {
-  testSelections.addEventListener("click", function (e) {
+  testSelections.addEventListener('click', function (e) {
     if (!report_data) return;
 
     const id = e.target.id;
-    if (id === "layout_btn") {
+    if (id === 'layout_btn') {
       report.src = layout_report.image;
-    } else if (id === "alignment_btn") {
+    } else if (id === 'alignment_btn') {
       report.src = alignment_report.row_center;
-    } else if (id === "contrast_btn") {
+    } else if (id === 'contrast_btn') {
       report.src = contrast_report.image;
-    } else if (id === "spelling_btn") {
+    } else if (id === 'spelling_btn') {
       report.src = spelling_report.image;
-    } else if (id === "images_btn") {
+    } else if (id === 'images_btn') {
       report.src = image_report.image;
     }
   });
+}
+
+if (sidebarDefects) {
+  const items = document.querySelectorAll('.sidebar-defects li');
+  items.forEach(item =>
+    item.addEventListener('click', function (e) {
+      this.nextElementSibling.classList.toggle('active');
+    })
+  );
 }

@@ -746,10 +746,11 @@ body {
     transform: translateX(0) scale(0.9);
   }
 }
-.sidebar__list li:hover + .sidebar-defects__defect {
+.sidebar__list li:hover + .sidebar-defects__defect:not(.active) {
   height: 2rem;
 }
-.sidebar__list li:active + .sidebar-defects__defect {
+
+.sidebar-defects__defect.active {
   height: 20rem;
   opacity: 1;
   transform: scale(1);
