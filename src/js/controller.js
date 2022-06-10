@@ -19,6 +19,8 @@ let spelling_report;
 let image_report;
 const testSelections = document.querySelector('.sidebar__list');
 const report = document.querySelector('.report');
+const labelLoaders = document.querySelectorAll('.loader');
+const sideBarIcons = document.querySelectorAll('.sidebar__icon');
 
 if (formParas) {
   formParas.addEventListener('submit', function (e) {
@@ -94,6 +96,9 @@ if (formTests) {
 
 if (upload) {
   upload.addEventListener('change', function (e) {
+    labelLoaders.forEach(icon => {
+      icon.classList.remove('hidden');
+    });
     const FR = new FileReader();
     FR.readAsDataURL(this.files[0]);
     console.log(this.files[0]);
@@ -108,6 +113,12 @@ if (upload) {
         });
 
         report_data = await res.json();
+        labelLoaders.forEach(icon => {
+          icon.classList.add('hidden');
+        });
+        sideBarIcons.forEach(icon => {
+          icon.classList.remove('hidden');
+        });
         console.log(report_data);
 
         layout_report = report_data.layout_test;
