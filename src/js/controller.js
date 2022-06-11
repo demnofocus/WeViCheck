@@ -9,6 +9,9 @@ const binaryImage = document.querySelector('.binary-image');
 const detectedImage = document.querySelector('.detected-image');
 const loadingIcon = document.querySelector('.loading-icon');
 const sidebarDefects = document.querySelector('.sidebar-defects');
+const sideBarTestTypes = document.querySelectorAll('.sidebar__item--btn');
+
+let testTypes;
 
 const upload = document.querySelector('.sidebar__file input');
 let report_data;
@@ -72,6 +75,7 @@ if (formTests) {
 
     const checkboxes = document.querySelectorAll('.form__checkbox');
     const values = [...checkboxes].map(checkbox => checkbox.checked);
+    document.cookie = values;
 
     try {
       const res = await fetch('http://127.0.0.1:5000/select_tests', {
@@ -95,6 +99,17 @@ if (formTests) {
 }
 
 if (upload) {
+  testTypes = document.cookie.split(',');
+  console.log(testTypes);
+  let i = 0;
+  sideBarTestTypes.forEach(btn => {
+    console.log(testTypes[i]);
+    if (testTypes[i] == 'false') {
+      btn.classList.add('hidden');
+    }
+    i++;
+  });
+
   upload.addEventListener('change', function (e) {
     labelLoaders.forEach(icon => {
       icon.classList.remove('hidden');
