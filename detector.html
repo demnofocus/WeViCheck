@@ -26,15 +26,10 @@
           <label for="file"> upload </label>
         </div>
 
-        <li>
-          <div
-            class="loader hidden"
-            style="float: left; margin-top: 18px; margin-left: 18px"
-          ></div>
-          <h2 class="sidebar__heading" style="float: left; margin-left: -5px">
-            Results
-          </h2>
-        </li>
+        <div style="display: flex; align-items: center; padding: 0 2rem">
+          <div class="loader hidden"></div>
+          <h2 class="sidebar__heading">Results</h2>
+        </div>
         <button id="image__name" class="sidebar__btn">Screenshot 1</button>
         <ul class="sidebar__list sidebar__list--menu">
           <li class="sidebar__item--btn">
@@ -90,32 +85,18 @@
       </div>
 
       <div class="sidebar-defects">
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="loader hidden"></div>
+          <h2 class="sidebar__heading">Defect Information</h2>
+        </div>
         <ul class="sidebar__list sidebar__list--defects">
-          <li>
-            <div
-              class="loader hidden"
-              style="float: left; margin-top: 18px; margin-left: 18px"
-            ></div>
-            <h2 class="sidebar__heading" style="float: left; margin-left: -5px">
-              Defect Information
-            </h2>
-          </li>
-          <li>
+          <li class="sidebar-defect__item">
             <button class="sidebar__btn">Defect 1</button>
           </li>
           <div class="sidebar-defects__defect">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-              ducimus similique in laudantium quia minima temporibus, assumenda,
-              nesciunt illo fuga tenetur, asperiores quae placeat rerum? Unde
-              minima impedit porro in!
-            </p>
-          </div>
-          <li>
-            <button class="sidebar__btn">Defect 2</button>
-          </li>
-          <div class="sidebar-defects__defect">
-            <p>
+            <p class="info">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
               ducimus similique in laudantium quia minima temporibus, assumenda,
               nesciunt illo fuga tenetur, asperiores quae placeat rerum? Unde

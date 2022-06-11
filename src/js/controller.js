@@ -26,6 +26,16 @@ const testSelections = document.querySelector('.sidebar__list');
 const report = document.querySelector('.report');
 const labelLoaders = document.querySelectorAll('.loader');
 const sideBarIcons = document.querySelectorAll('.sidebar__icon');
+const resultInfoSection = document.querySelector('.sidebar__list--defects');
+
+const selectDefects = () => {
+  const items = document.querySelectorAll('.sidebar-defect__item');
+  items.forEach(item =>
+    item.addEventListener('click', function (e) {
+      this.nextElementSibling.classList.toggle('active');
+    })
+  );
+};
 
 if (formParas) {
   formParas.addEventListener('submit', function (e) {
@@ -155,28 +165,40 @@ if (upload) {
 
 if (testSelections) {
   testSelections.addEventListener('click', function (e) {
+    resultInfoSection.innerHTML = '';
     if (!report_data) return;
 
     const id = e.target.id;
     if (id === 'layout_btn') {
       report.src = layout_report.image;
-    } else if (id === 'alignment_btn') {
+
+      Object.keys(layout_report.report).forEach(x => {
+        console.log(x);
+        console.log(layout_report.report[x]);
+        console.log(layout_report.report[x]);
+        const html = `<li class="sidebar-defect__item">
+                      <button class="sidebar__btn">${x}</button>
+                      </li>
+                      <div class="sidebar-defects__defect">
+                        <p class="info">
+                          ${layout_report.report[x].info}
+                        </p>
+                      </div>`;
+        resultInfoSection.insertAdjacentHTML('beforeend', html);
+      });
+      selectDefects();
+    }
+    if (id === 'alignment_btn') {
       report.src = alignment_report.row_center;
-    } else if (id === 'contrast_btn') {
+    }
+    if (id === 'contrast_btn') {
       report.src = contrast_report.image;
-    } else if (id === 'spelling_btn') {
+    }
+    if (id === 'spelling_btn') {
       report.src = spelling_report.image;
-    } else if (id === 'images_btn') {
+    }
+    if (id === 'images_btn') {
       report.src = image_report.image;
     }
   });
-}
-
-if (sidebarDefects) {
-  const items = document.querySelectorAll('.sidebar-defects li');
-  items.forEach(item =>
-    item.addEventListener('click', function (e) {
-      this.nextElementSibling.classList.toggle('active');
-    })
-  );
 }
