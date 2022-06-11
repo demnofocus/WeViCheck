@@ -25,8 +25,17 @@
           <input type="file" id="file" />
           <label for="file"> upload </label>
         </div>
-        <li><h2 class="sidebar__heading">Results</h2></li>
-        <button class="sidebar__btn">Screenshot 1</button>
+
+        <li>
+          <div
+            class="loader hidden"
+            style="float: left; margin-top: 18px; margin-left: 18px"
+          ></div>
+          <h2 class="sidebar__heading" style="float: left; margin-left: -5px">
+            Results
+          </h2>
+        </li>
+        <button id="image__name" class="sidebar__btn">Screenshot 1</button>
         <ul class="sidebar__list sidebar__list--menu">
           <li class="sidebar__item--btn">
             <button id="layout_btn">
@@ -82,6 +91,15 @@
 
       <div class="sidebar-defects">
         <ul class="sidebar__list sidebar__list--defects">
+          <li>
+            <div
+              class="loader hidden"
+              style="float: left; margin-top: 18px; margin-left: 18px"
+            ></div>
+            <h2 class="sidebar__heading" style="float: left; margin-left: -5px">
+              Defect Information
+            </h2>
+          </li>
           <li>
             <button class="sidebar__btn">Defect 1</button>
           </li>

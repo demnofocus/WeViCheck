@@ -14,7 +14,9 @@ const sideBarTestTypes = document.querySelectorAll('.sidebar__item--btn');
 let testTypes;
 
 const upload = document.querySelector('.sidebar__file input');
+const imageName = document.getElementById('image__name');
 let report_data;
+let image_name;
 let layout_report;
 let alignment_report;
 let contrast_report;
@@ -136,11 +138,14 @@ if (upload) {
         });
         console.log(report_data);
 
+        image_name = report_data.image_info.image_name;
         layout_report = report_data.layout_test;
         alignment_report = report_data.alignment_test;
         contrast_report = report_data.contrast_test;
         spelling_report = report_data.spelling_test;
         image_report = report_data.image_test;
+        console.log(image_name);
+        imageName.innerText = image_name;
       } catch (err) {
         console.error(err);
       }
