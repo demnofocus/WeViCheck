@@ -193,12 +193,60 @@ if (testSelections) {
     }
     if (id === 'contrast_btn') {
       report.src = contrast_report.image;
+
+      Object.keys(contrast_report.report).forEach(x => {
+        console.log(x);
+        console.log(contrast_report.report[x]);
+        console.log(contrast_report.report[x]);
+        const html = `<li class="sidebar-defect__item">
+                      <button class="sidebar__btn">${x}</button>
+                      </li>
+                      <div class="sidebar-defects__defect">
+                        <p class="info">
+                          ${contrast_report.report[x].info}
+                        </p>
+                      </div>`;
+        resultInfoSection.insertAdjacentHTML('beforeend', html);
+      });
+      selectDefects();
     }
     if (id === 'spelling_btn') {
       report.src = spelling_report.image;
+
+      Object.keys(spelling_report.report).forEach(x => {
+        console.log(x);
+        console.log(spelling_report.report[x]);
+        console.log(spelling_report.report[x]);
+        const html = `<li class="sidebar-defect__item">
+                      <button class="sidebar__btn">${x}</button>
+                      </li>
+                      <div class="sidebar-defects__defect">
+                        <p class="info">
+                          ${spelling_report.report[x].info}
+                        </p>
+                      </div>`;
+        resultInfoSection.insertAdjacentHTML('beforeend', html);
+      });
+      selectDefects();
     }
     if (id === 'images_btn') {
       report.src = image_report.image;
+
+      Object.keys(image_report.report).forEach(x => {
+        console.log(x);
+        console.log(image_report.report[x]);
+        console.log(image_report.report[x]);
+        const html = `<li class="sidebar-defect__item">
+                      <button class="sidebar__btn">${x}</button>
+                      </li>
+                      <div class="sidebar-defects__defect">
+                        <p class="info">
+                          ${image_report.report[x].info}
+                        </p>
+                      </div>`;
+        resultInfoSection.insertAdjacentHTML('beforeend', html);
+      });
+      selectDefects();
     }
   });
 }
