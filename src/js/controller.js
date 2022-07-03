@@ -27,6 +27,7 @@ const report = document.querySelector('.report');
 const labelLoaders = document.querySelectorAll('.loader');
 const sideBarIcons = document.querySelectorAll('.sidebar__icon');
 const resultInfoSection = document.querySelector('.sidebar__list--defects');
+const screenshot = document.querySelector('.screenshot');
 
 const selectDefects = () => {
   const items = document.querySelectorAll('.sidebar-defect__item');
@@ -189,7 +190,29 @@ if (testSelections) {
       selectDefects();
     }
     if (id === 'alignment_btn') {
-      report.src = alignment_report.row_center;
+      var reportNum = 'report';
+      var count = 0;
+
+      Object.keys(alignment_report).forEach(x => {
+        var image_src = alignment_report[x];
+
+        count = count + 1;
+        reportNum = 'report' + count;
+
+        const html = `<hr/>
+                      <p id=${reportNum} >Report of Alignment: ${x}</p>
+                      <img class=${reportNum} src="${image_src}" alt="" />
+                      <hr/>
+                      <br/>`;
+
+        var reportLink = '#' + reportNum;
+        const htmlLinks = `<li class="sidebar-defect__item">
+                            <button onclick="location.href='${reportLink}'" class="sidebar__btn">Report: ${x}</button>
+                            </li>`;
+
+        screenshot.insertAdjacentHTML('beforeend', html);
+        resultInfoSection.insertAdjacentHTML('beforeend', htmlLinks);
+      });
     }
     if (id === 'contrast_btn') {
       report.src = contrast_report.image;
@@ -198,15 +221,23 @@ if (testSelections) {
         console.log(x);
         console.log(contrast_report.report[x]);
         console.log(contrast_report.report[x]);
-        const html = `<li class="sidebar-defect__item">
-                      <button class="sidebar__btn">${x}</button>
-                      </li>
-                      <div class="sidebar-defects__defect">
-                        <p class="info">
-                          ${contrast_report.report[x].info}
-                        </p>
-                      </div>`;
-        resultInfoSection.insertAdjacentHTML('beforeend', html);
+        if (contrast_report.report[x].test === 'fail') {
+          const html = `<li class="sidebar-defect__item">
+                        <button class="sidebar__btn">${x}</button>
+                        </li>
+                        <div class="sidebar-defects__defect">
+                          <p class="info">Text:
+                            ${contrast_report.report[x].content}
+                          </p>
+                          <p class="info">Contrast level: 
+                            ${contrast_report.report[x].contrast_lvl}
+                          </p>
+                          <p class="info">Expected contrast level is greater than 
+                            ${contrast_report.report[x].expected}
+                          </p>
+                        </div>`;
+          resultInfoSection.insertAdjacentHTML('beforeend', html);
+        }
       });
       selectDefects();
     }
@@ -217,15 +248,26 @@ if (testSelections) {
         console.log(x);
         console.log(spelling_report.report[x]);
         console.log(spelling_report.report[x]);
-        const html = `<li class="sidebar-defect__item">
-                      <button class="sidebar__btn">${x}</button>
-                      </li>
-                      <div class="sidebar-defects__defect">
-                        <p class="info">
-                          ${spelling_report.report[x].info}
-                        </p>
-                      </div>`;
-        resultInfoSection.insertAdjacentHTML('beforeend', html);
+        if (spelling_report.report[x].test === 'fail') {
+          const html = `<li class="sidebar-defect__item">
+                        <button class="sidebar__btn">${x}</button>
+                        </li>
+                        <div class="sidebar-defects__defect">
+                          <p class="info">
+                            Text:
+                            ${spelling_report.report[x].content}
+                          </p>
+                          <p class="info">
+                            Mistake: 
+                            ${spelling_report.report[x].mistakes}
+                          </p>
+                          <p class="info">
+                            Correction: 
+                            ${spelling_report.report[x].corrections}
+                          </p>
+                        </div>`;
+          resultInfoSection.insertAdjacentHTML('beforeend', html);
+        }
       });
       selectDefects();
     }
@@ -236,15 +278,20 @@ if (testSelections) {
         console.log(x);
         console.log(image_report.report[x]);
         console.log(image_report.report[x]);
-        const html = `<li class="sidebar-defect__item">
+        if (image_report.report[x].test === 'fail') {
+          const html = `<li class="sidebar-defect__item">
                       <button class="sidebar__btn">${x}</button>
                       </li>
                       <div class="sidebar-defects__defect">
-                        <p class="info">
-                          ${image_report.report[x].info}
+                        <p class="info">Laplacian amount:
+                          ${image_report.report[x].laplacian}
+                        </p>
+                        <p class="info">Required laplacian amount:
+                          ${image_report.report[x].threshold}
                         </p>
                       </div>`;
-        resultInfoSection.insertAdjacentHTML('beforeend', html);
+          resultInfoSection.insertAdjacentHTML('beforeend', html);
+        }
       });
       selectDefects();
     }
