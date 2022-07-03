@@ -124,6 +124,13 @@ if (upload) {
   });
 
   upload.addEventListener('change', function (e) {
+    resultInfoSection.innerHTML = '';
+    screenshot.innerHTML = '';
+
+    sideBarIcons.forEach(icon => {
+      icon.classList.add('hidden');
+    });
+
     labelLoaders.forEach(icon => {
       icon.classList.remove('hidden');
     });
@@ -167,11 +174,16 @@ if (upload) {
 if (testSelections) {
   testSelections.addEventListener('click', function (e) {
     resultInfoSection.innerHTML = '';
+    screenshot.innerHTML = '';
+
     if (!report_data) return;
 
     const id = e.target.id;
+
     if (id === 'layout_btn') {
-      report.src = layout_report.image;
+      // report.src = layout_report.image;
+      const html = `<img class="report" src="${layout_report.image}" alt="" />`;
+      screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(layout_report.report).forEach(x => {
         console.log(x);
@@ -215,7 +227,9 @@ if (testSelections) {
       });
     }
     if (id === 'contrast_btn') {
-      report.src = contrast_report.image;
+      // report.src = contrast_report.image;
+      const html = `<img class="report" src="${contrast_report.image}" alt="" />`;
+      screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(contrast_report.report).forEach(x => {
         console.log(x);
@@ -242,7 +256,9 @@ if (testSelections) {
       selectDefects();
     }
     if (id === 'spelling_btn') {
-      report.src = spelling_report.image;
+      // report.src = spelling_report.image;
+      const html = `<img class="report" src="${spelling_report.image}" alt="" />`;
+      screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(spelling_report.report).forEach(x => {
         console.log(x);
@@ -272,7 +288,9 @@ if (testSelections) {
       selectDefects();
     }
     if (id === 'images_btn') {
-      report.src = image_report.image;
+      // report.src = image_report.image;
+      const html = `<img class="report" src="${image_report.image}" alt="" />`;
+      screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(image_report.report).forEach(x => {
         console.log(x);
