@@ -232,7 +232,7 @@ if (testSelections) {
                           <p class="info">Contrast level: 
                             ${contrast_report.report[x].contrast_lvl}
                           </p>
-                          <p class="info">Expected contrast level is greater than 
+                          <p class="info">Expected minimum contrast level: 
                             ${contrast_report.report[x].expected}
                           </p>
                         </div>`;
