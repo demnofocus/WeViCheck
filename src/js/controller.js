@@ -21,6 +21,7 @@ let layout_report;
 let alignment_report;
 let contrast_report;
 let spelling_report;
+let grammar_report;
 let image_report;
 const testSelections = document.querySelector('.sidebar__list');
 const report = document.querySelector('.report');
@@ -98,7 +99,8 @@ if (formTests) {
           alignment: values[1],
           text_contrast: values[2],
           spelling: values[3],
-          images: values[4],
+          grammar: values[4],
+          images: values[5],
         }),
       });
 
@@ -161,6 +163,7 @@ if (upload) {
         alignment_report = report_data.alignment_test;
         contrast_report = report_data.contrast_test;
         spelling_report = report_data.spelling_test;
+        grammar_report = report_data.grammar_test;
         image_report = report_data.image_test;
         console.log(image_name);
         imageName.innerText = image_name;
@@ -270,16 +273,47 @@ if (testSelections) {
                         </li>
                         <div class="sidebar-defects__defect">
                           <p class="info">
+                            Word:
+                            ${spelling_report.report[x].word}
+                          </p>
+                          <p class="info">
+                            Corrected: 
+                            ${spelling_report.report[x].corrected}
+                          </p>
+                          <p class="info">
+                            Suggestions: 
+                            ${spelling_report.report[x].suggestions}
+                          </p>
+                        </div>`;
+          resultInfoSection.insertAdjacentHTML('beforeend', html);
+        }
+      });
+      selectDefects();
+    }
+    if (id === 'grammar_btn') {
+      const html = `<img class="report" src="${grammar_report.image}" alt="" />`;
+      screenshot.insertAdjacentHTML('beforeend', html);
+
+      Object.keys(grammar_report.report).forEach(x => {
+        console.log(x);
+        console.log(grammar_report.report[x]);
+        console.log(grammar_report.report[x]);
+        if (grammar_report.report[x].test === 'fail') {
+          const html = `<li class="sidebar-defect__item">
+                        <button class="sidebar__btn">${x}</button>
+                        </li>
+                        <div class="sidebar-defects__defect">
+                          <p class="info">
                             Text:
-                            ${spelling_report.report[x].content}
+                            ${grammar_report.report[x].content}
                           </p>
                           <p class="info">
                             Mistake: 
-                            ${spelling_report.report[x].mistakes}
+                            ${grammar_report.report[x].mistakes}
                           </p>
                           <p class="info">
                             Correction: 
-                            ${spelling_report.report[x].corrections}
+                            ${grammar_report.report[x].corrections}
                           </p>
                         </div>`;
           resultInfoSection.insertAdjacentHTML('beforeend', html);
