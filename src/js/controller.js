@@ -105,8 +105,7 @@ if (formTests) {
       });
 
       const data = await res.json();
-      if (data.status === 'success')
-        location.assign('http://127.0.0.1:5501/detector.html');
+      if (data.status === 'success') location.assign('/detector.html');
     } catch (err) {
       console.error(err);
     }
@@ -199,7 +198,7 @@ if (testSelections) {
         //                 </p>
         //               </div>`;
         const html = `
-          <p class="info" style="padding:1rem">
+          <p class="info" style="padding:1rem; font-size:1.5rem">
             ${layout_report.report[x]}
           </p>`;
         resultInfoSection.insertAdjacentHTML('beforeend', html);
