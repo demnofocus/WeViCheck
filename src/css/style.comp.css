@@ -71,6 +71,10 @@ body {
   max-width: 120rem;
   margin: 0 auto; }
 
+.u-center-mid {
+  max-width: 150rem;
+  margin: 0 auto; }
+
 .u-margin-bottom-small {
   margin-bottom: 2rem; }
 
@@ -95,7 +99,15 @@ body {
 .u-padding-sides-small {
   padding: 0 2rem; }
 
-.btn, .sidebar__btn {
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  position: absolute; }
+
+.btn, .sidebar__btn, .sidebar__list--menu button {
   border: none;
   background-color: transparent;
   color: var(--color-white);
@@ -127,6 +139,18 @@ body {
     background-color: transparent; }
   .btn:hover::before {
     transform: scaleX(1); }
+
+.loader {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid white;
+  border-width: 3px 0 3px 3px;
+  animation: 0.6s rotateLoader infinite linear; }
+
+@keyframes rotateLoader {
+  to {
+    transform: rotate(1turn); } }
 
 .hero {
   height: 70vh;
@@ -566,31 +590,36 @@ body {
     .sidebar__list--menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); } }
+  .sidebar__list--menu button {
+    width: 100%;
+    background-color: #444;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    gap: 1rem; }
+    @media only screen and (max-width: 50em) {
+      .sidebar__list--menu button {
+        align-items: stretch;
+        padding: 2rem; } }
   .sidebar__list li {
     color: var(--color-white);
     transition: transform 0.5s;
     background-color: var(--color-grey-dark-2); }
-    .sidebar__list li span {
-      background-color: #444;
-      padding: 2rem 4rem;
-      display: flex;
-      align-items: center;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      gap: 1rem; }
-      @media only screen and (max-width: 50em) {
-        .sidebar__list li span {
-          align-items: stretch;
-          padding: 2rem; } }
     .sidebar__list li:hover.sidebar__item--btn {
       transform: translateX(5rem);
       z-index: 1; }
-    .sidebar__list li:hover + .sidebar-defects__defect {
+      @media only screen and (max-width: 50em) {
+        .sidebar__list li:hover.sidebar__item--btn {
+          transform: translateX(0) scale(0.9); } }
+    .sidebar__list li:hover + .sidebar-defects__defect:not(.active) {
       height: 2rem; }
-    .sidebar__list li:active + .sidebar-defects__defect {
-      height: 20rem;
-      opacity: 1;
-      transform: scale(1); }
+
+.sidebar-defects__defect.active {
+  height: fit-content;
+  opacity: 1;
+  transform: scale(1); }
 
 .section--about {
   margin-bottom: 15rem;
@@ -623,3 +652,102 @@ body {
   overflow: scroll; }
   .screenshot img {
     width: 100%; }
+
+.binary-image,
+.detected-image {
+  width: 100%; }
+
+.images {
+  display: flex;
+  gap: 5rem;
+  margin: 2rem 0; }
+
+.form--tests,
+.form--paras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 50rem; }
+
+.btn--config {
+  margin-top: 2rem;
+  grid-column: 1/-1;
+  letter-spacing: 0.5rem; }
+
+.section--tests {
+  margin-bottom: 3rem; }
+
+.main--config {
+  margin-top: 3rem; }
+
+.slider {
+  position: relative;
+  width: 100%; }
+
+.slider input {
+  appearance: none;
+  width: 100%;
+  cursor: pointer; }
+
+.slider input::-webkit-slider-runnable-track {
+  background-color: var(--color-grey-dark-2);
+  border-radius: 0.2rem; }
+
+.slider input::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--color-secondary);
+  transition: all 0.5s; }
+
+.slider input::-webkit-slider-thumb:hover {
+  transform: scale(1.2); }
+
+.slider label {
+  position: absolute;
+  right: -5rem;
+  top: -0.4rem;
+  color: var(--color-secondary); }
+
+.form__checkbox {
+  display: none; }
+
+.form__checkbox + label {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid var(--color-secondary);
+  position: relative;
+  border-radius: 0.2rem;
+  transition: all 0.3s;
+  cursor: pointer; }
+
+.form__checkbox:checked + label {
+  background-color: var(--color-secondary);
+  transform: scale(1.2); }
+
+.input--photo {
+  display: none; }
+
+.input--photo + label {
+  width: 80%;
+  height: 120%;
+  border: 2px solid var(--color-grey-dark-2);
+  justify-self: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s; }
+
+.input--photo + label:hover {
+  background-color: var(--color-grey-dark-2);
+  color: var(--color-white); }
+
+.input--photo + label::before {
+  content: "upload";
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }

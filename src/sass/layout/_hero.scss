@@ -61,7 +61,7 @@
     &-v,
     &-i,
     &-e {
-      font-size: 8rem;
+      font-size: 5rem;
       animation: visibleScale 1s 0.5s;
       animation-fill-mode: backwards;
     }
@@ -76,9 +76,10 @@
     }
 
     &-check {
-      font-size: 5rem;
+      font-size: 4rem;
       grid-column: 1/-1;
-      margin-left: 2rem;
+      margin-left: 1rem;
+      padding: 1rem;
       border: 0.5rem solid var(--color-white);
       letter-spacing: 1rem;
       text-justify: distribute;
@@ -86,7 +87,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     height: 80vh;
     width: 100%;
     position: absolute;
@@ -102,7 +103,7 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     height: 80vh;
     width: 100%;
     position: absolute;

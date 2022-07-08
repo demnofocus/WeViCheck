@@ -244,7 +244,7 @@ body {
   }
 }
 .hero__heading-w, .hero__heading-v, .hero__heading-i, .hero__heading-e {
-  font-size: 8rem;
+  font-size: 5rem;
   animation: visibleScale 1s 0.5s;
   animation-fill-mode: backwards;
 }
@@ -258,9 +258,10 @@ body {
   }
 }
 .hero__heading-check {
-  font-size: 5rem;
+  font-size: 4rem;
   grid-column: 1/-1;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  padding: 1rem;
   border: 0.5rem solid var(--color-white);
   letter-spacing: 1rem;
   text-justify: distribute;
@@ -561,7 +562,7 @@ body {
   color: var(--color-primary);
 }
 .creators__img {
-  flex: 0 0 40%;
+  flex: 0 0 20%;
 }
 .creators__img img {
   width: 100%;
@@ -590,17 +591,19 @@ body {
   display: flex;
   gap: 5rem;
   color: var(--color-white);
-  padding: 50rem 0 20rem 0;
-  min-height: 200vh;
+  padding: 40rem 0 10rem 0;
   position: relative;
+}
+.steps__content {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin-bottom: 3rem;
 }
 @media only screen and (max-width: 37.5em) {
   .steps {
     flex-direction: column;
   }
-}
-.steps p {
-  margin-bottom: 10rem;
 }
 .steps__header {
   top: 70%;
@@ -614,17 +617,15 @@ body {
   }
 }
 .steps__number {
-  font-size: 5rem;
+  font-size: 4rem;
   position: relative;
   z-index: 1;
-  margin-bottom: 3rem;
-  margin-left: 3rem;
   display: inline-block;
 }
 .steps__number::before {
   content: "";
-  height: 10rem;
-  width: 10rem;
+  height: 8rem;
+  width: 8rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -751,7 +752,7 @@ body {
 }
 
 .sidebar-defects__defect.active {
-  height: 20rem;
+  height: fit-content;
   opacity: 1;
   transform: scale(1);
 }
@@ -763,7 +764,7 @@ body {
 .section--steps {
   background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
   transform: translateY(-28rem);
-  margin-bottom: -10rem;
+  margin-bottom: -18rem;
   padding: 0 3rem;
 }
 .section--creators {
@@ -890,7 +891,7 @@ body {
 }
 
 .input--photo + label {
-  width: 80%;
+  width: 100%;
   height: 120%;
   border: 2px solid var(--color-grey-dark-2);
   justify-self: center;

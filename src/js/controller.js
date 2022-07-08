@@ -190,16 +190,18 @@ if (testSelections) {
 
       Object.keys(layout_report.report).forEach(x => {
         console.log(x);
-        console.log(layout_report.report[x]);
-        console.log(layout_report.report[x]);
-        const html = `<li class="sidebar-defect__item">
-                      <button class="sidebar__btn">${x}</button>
-                      </li>
-                      <div class="sidebar-defects__defect">
-                        <p class="info">
-                          ${layout_report.report[x].info}
-                        </p>
-                      </div>`;
+        // const html = `<li class="sidebar-defect__item">
+        //               <button class="sidebar__btn">${x}</button>
+        //               </li>
+        //               <div class="sidebar-defects__defect">
+        //                 <p class="info">
+        //                   ${layout_report.report[x].info}
+        //                 </p>
+        //               </div>`;
+        const html = `
+          <p class="info" style="padding:1rem">
+            ${layout_report.report[x]}
+          </p>`;
         resultInfoSection.insertAdjacentHTML('beforeend', html);
       });
       selectDefects();
@@ -240,7 +242,7 @@ if (testSelections) {
         console.log(contrast_report.report[x]);
         if (contrast_report.report[x].test === 'fail') {
           const html = `<li class="sidebar-defect__item">
-                        <button class="sidebar__btn">${x}</button>
+                        <button class="sidebar__btn">Issue: ${contrast_report.report[x].num}</button>
                         </li>
                         <div class="sidebar-defects__defect">
                           <p class="info">Text:
@@ -269,7 +271,7 @@ if (testSelections) {
         console.log(spelling_report.report[x]);
         if (spelling_report.report[x].test === 'fail') {
           const html = `<li class="sidebar-defect__item">
-                        <button class="sidebar__btn">${x}</button>
+                        <button class="sidebar__btn">Issue: ${spelling_report.report[x].num}</button>
                         </li>
                         <div class="sidebar-defects__defect">
                           <p class="info">
@@ -300,7 +302,7 @@ if (testSelections) {
         console.log(grammar_report.report[x]);
         if (grammar_report.report[x].test === 'fail') {
           const html = `<li class="sidebar-defect__item">
-                        <button class="sidebar__btn">${x}</button>
+                        <button class="sidebar__btn">Issue: ${grammar_report.report[x].num}</button>
                         </li>
                         <div class="sidebar-defects__defect">
                           <p class="info">
@@ -332,7 +334,7 @@ if (testSelections) {
         console.log(image_report.report[x]);
         if (image_report.report[x].test === 'fail') {
           const html = `<li class="sidebar-defect__item">
-                      <button class="sidebar__btn">${x}</button>
+                      <button class="sidebar__btn">Issue: ${image_report.report[x].num}</button>
                       </li>
                       <div class="sidebar-defects__defect">
                         <p class="info">Laplacian amount:

@@ -27,8 +27,8 @@
 
       <div class="nav__list">
         <li><a class="nav__link" href="#about">about</a></li>
-        <li><a class="nav__link" href="#">features</a></li>
-        <li><a class="nav__link" href="#">operations</a></li>
+        <li><a class="nav__link" href="#features">features</a></li>
+        <li><a class="nav__link" href="#steps">How To Use</a></li>
       </div>
     </div>
 
@@ -38,11 +38,18 @@
           <p class="u-margin-bottom-small">
             WeViCheck is a tool supporting you to make sure your applications
             have the best quality user interfaces. Not able to go through all
-            the pages manually or using automation? Use WeViCheck to cover
-            most of the important UI functionalities.
+            the pages manually or using automation? Use WeViCheck to cover most
+            of the important UI functionalities.
           </p>
-          <button class="btn u-margin-right-small">Learn more</button>
-          <button class="btn btn--blue">Get Started</button>
+          <button
+            class="btn u-margin-right-small"
+            onclick="location.href='#features'"
+          >
+            Learn more
+          </button>
+          <button class="btn btn--blue" onclick="location.href='#getstarted'">
+            Get Started
+          </button>
         </div>
 
         <h1 class="hero__heading">
@@ -65,10 +72,10 @@
           <p>
             WeViCheck enables next level UI checking with more tests to be
             carried out using a hybrid approach involving computer vision,
-             optical character recognition and algorithms. Visual testing
-             is made easy for you by an automated approach on testing for defects in 
-             more than five identified areas of interests. Stay tuned in for 
-             many more upcoming new tests.
+            optical character recognition and algorithms. Visual testing is made
+            easy for you by an automated approach on testing for defects in more
+            than five identified areas of interests. Stay tuned in for many more
+            upcoming new tests.
           </p>
         </div>
       </section>
@@ -85,11 +92,10 @@
               <svg class="features__icon u-margin-bottom-medium">
                 <use href="./src/img/sprite.svg#icon-tick"></use>
               </svg>
-              <h2 class="heading-tertiary u-margin-bottom-small">
-                Layout
-              </h2>
+              <h2 class="heading-tertiary u-margin-bottom-small">Layout</h2>
               <p>
-                Check the layout of UI elements and identify the available defects
+                Check the layout of UI elements and identify the available
+                defects
               </p>
             </li>
             <li>
@@ -108,69 +114,59 @@
               <svg class="features__icon u-margin-bottom-medium">
                 <use href="./src/img/sprite.svg#icon-tick"></use>
               </svg>
-              <h2 class="heading-tertiary u-margin-bottom-small">
-                Alignment
-              </h2>
-              <p>
-                Identify elements that are not aligned in the UI
-              </p>
+              <h2 class="heading-tertiary u-margin-bottom-small">Alignment</h2>
+              <p>Identify elements that are not aligned in the UI</p>
             </li>
 
             <li>
               <svg class="features__icon u-margin-bottom-medium">
                 <use href="./src/img/sprite.svg#icon-tick"></use>
               </svg>
-              <h2 class="heading-tertiary u-margin-bottom-small">
-                Contrast
-              </h2>
-              <p>
-                Identify the low contrast texts affecting UX
-              </p>
+              <h2 class="heading-tertiary u-margin-bottom-small">Contrast</h2>
+              <p>Identify the low contrast texts affecting UX</p>
             </li>
           </ul>
         </div>
 
-        <div class="bg-image">
+        <div class="bg-image" id="getstarted">
           <a class="btn" href="configuration.html">Detector</a>
         </div>
       </section>
 
       <section class="section--steps">
         <div class="steps u-center">
-          <div class="steps__header">
+          <div class="steps__header" id="steps">
             <h4 class="steps__sub-heading">steps</h4>
             <h2 class="steps__heading">How to use</h2>
           </div>
 
           <div>
-            <div>
+            <div class="steps__content">
               <span class="steps__number">1</span>
-              <p>
-                Upload screenshots of the application UI
-              </p>
+              <p>Upload screenshots of the application UI</p>
             </div>
 
-            <div>
+            <div class="steps__content">
               <span class="steps__number">2</span>
               <p>
                 Select the parameters resulting in the best element detection
               </p>
             </div>
 
-            <div>
+            <div class="steps__content">
               <span class="steps__number">3</span>
-              <p>
-                Select the required tests to be conducted
-              </p>
+              <p>Select the required tests to be conducted</p>
             </div>
 
-            <div>
+            <div class="steps__content">
               <span class="steps__number">4</span>
-              <p>
-                Run the detection system and collect the test reports
-              </p>
+              <p>Run the detection system and collect the test reports</p>
             </div>
-            
+
+            <div class="steps__content">
+              <span class="steps__number">5</span>
+              <p>Run the detection system and collect the test reports</p>
+            </div>
           </div>
         </div>
       </section>
@@ -192,10 +188,11 @@
               <h4 class="creators__heading-sub">founder</h4>
               <h2 class="creators__heading"><span>Hi,</span> I'm Kevin</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Ratione, recusandae ut perspiciatis commodi, doloremque ipsum
-                adipisci minima consequatur deserunt placeat voluptas nobis hic.
-                Tempora pariatur temporibus asperiores excepturi optio maiores!
+                I am a final year undergaduate of University of Westminster with
+                experience as a Quality Engineering intern. WeViCheck is my
+                final year project designed to help User Interface (UI) testing
+                further with the help of a hybrid approach to help testing on
+                many areas identified important in UI testing easier.
               </p>
             </div>
           </div>

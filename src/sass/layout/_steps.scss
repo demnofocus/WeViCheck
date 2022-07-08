@@ -2,16 +2,23 @@
   display: flex;
   gap: 5rem;
   color: var(--color-white);
-  padding: 50rem 0 20rem 0;
-  min-height: 200vh;
+  padding: 40rem 0 10rem 0;
+  // min-height: 200vh;
   position: relative;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    margin-bottom: 3rem;
+  }
 
   @include respond(bp-small) {
     flex-direction: column;
   }
 
   p {
-    margin-bottom: 10rem;
+    // margin-bottom: 10rem;
   }
 
   &__header {
@@ -26,17 +33,17 @@
   }
 
   &__number {
-    font-size: 5rem;
+    font-size: 4rem;
     position: relative;
     z-index: 1;
-    margin-bottom: 3rem;
-    margin-left: 3rem;
+    // margin-bottom: 3rem;
+    // margin-left: 3rem;
     display: inline-block;
 
     &::before {
-      content: "";
-      height: 10rem;
-      width: 10rem;
+      content: '';
+      height: 8rem;
+      width: 8rem;
       @include center;
       border-radius: 50%;
       background-color: var(--color-grey-dark-2);

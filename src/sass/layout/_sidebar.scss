@@ -121,7 +121,7 @@
 }
 
 .sidebar-defects__defect.active {
-  height: 20rem;
+  height: fit-content;
   opacity: 1;
   transform: scale(1);
 }
