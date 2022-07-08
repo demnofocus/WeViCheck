@@ -30,6 +30,13 @@ const sideBarIcons = document.querySelectorAll('.sidebar__icon');
 const resultInfoSection = document.querySelector('.sidebar__list--defects');
 const screenshot = document.querySelector('.screenshot');
 
+const contrastTick = document.getElementById('contrast_tick');
+const spellingTick = document.getElementById('spelling_tick');
+const alignmentTick = document.getElementById('alignment_tick');
+const layoutTick = document.getElementById('layout_tick');
+const grammarTick = document.getElementById('grammar_tick');
+const imageTick = document.getElementById('image_tick');
+
 const selectDefects = () => {
   const items = document.querySelectorAll('.sidebar-defect__item');
   items.forEach(item =>
@@ -125,6 +132,8 @@ if (upload) {
   });
 
   upload.addEventListener('change', function (e) {
+    if (!this.files[0]) return;
+
     resultInfoSection.innerHTML = '';
     screenshot.innerHTML = '';
 
@@ -135,6 +144,7 @@ if (upload) {
     labelLoaders.forEach(icon => {
       icon.classList.remove('hidden');
     });
+
     const FR = new FileReader();
     FR.readAsDataURL(this.files[0]);
     console.log(this.files[0]);
@@ -154,6 +164,7 @@ if (upload) {
         });
         sideBarIcons.forEach(icon => {
           icon.classList.remove('hidden');
+          icon.classList.add('sidebar__icon--green');
         });
         console.log(report_data);
 
@@ -240,6 +251,7 @@ if (testSelections) {
         console.log(contrast_report.report[x]);
         console.log(contrast_report.report[x]);
         if (contrast_report.report[x].test === 'fail') {
+          contrastTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${contrast_report.report[x].num}</button>
                         </li>
@@ -269,6 +281,7 @@ if (testSelections) {
         console.log(spelling_report.report[x]);
         console.log(spelling_report.report[x]);
         if (spelling_report.report[x].test === 'fail') {
+          spellingTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${spelling_report.report[x].num}</button>
                         </li>
@@ -300,6 +313,7 @@ if (testSelections) {
         console.log(grammar_report.report[x]);
         console.log(grammar_report.report[x]);
         if (grammar_report.report[x].test === 'fail') {
+          grammarTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${grammar_report.report[x].num}</button>
                         </li>
@@ -332,6 +346,7 @@ if (testSelections) {
         console.log(image_report.report[x]);
         console.log(image_report.report[x]);
         if (image_report.report[x].test === 'fail') {
+          imageTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                       <button class="sidebar__btn">Issue: ${image_report.report[x].num}</button>
                       </li>

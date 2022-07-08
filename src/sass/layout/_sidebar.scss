@@ -25,9 +25,17 @@
   }
 
   &__icon {
-    fill: var(--color-secondary);
+    // fill: var(--color-secondary);
     height: 2rem;
     width: 2rem;
+
+    &--green {
+      fill: var(--color-secondary);
+    }
+
+    &--red {
+      fill: red;
+    }
   }
 
   &__heading {
