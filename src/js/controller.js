@@ -121,10 +121,9 @@ if (formTests) {
 
 if (upload) {
   testTypes = document.cookie.split(',');
-  console.log(testTypes);
+
   let i = 0;
   sideBarTestTypes.forEach(btn => {
-    console.log(testTypes[i]);
     if (testTypes[i] == 'false') {
       btn.classList.add('hidden');
     }
@@ -147,7 +146,6 @@ if (upload) {
 
     const FR = new FileReader();
     FR.readAsDataURL(this.files[0]);
-    console.log(this.files[0]);
 
     FR.addEventListener('load', async function (e) {
       try {
@@ -166,7 +164,6 @@ if (upload) {
           icon.classList.remove('hidden');
           icon.classList.add('sidebar__icon--green');
         });
-        console.log(report_data);
 
         image_name = report_data.image_info.image_name;
         layout_report = report_data.layout_test;
@@ -175,7 +172,44 @@ if (upload) {
         spelling_report = report_data.spelling_test;
         grammar_report = report_data.grammar_test;
         image_report = report_data.image_test;
-        console.log(image_name);
+
+        if (
+          layout_report !== undefined &&
+          layout_report.test_result === 'fail'
+        ) {
+          layoutTick.classList.remove('sidebar__icon--green');
+          layoutTick.classList.add('sidebar__icon--red');
+        }
+
+        if (
+          contrast_report !== undefined &&
+          contrast_report.test_result === 'fail'
+        ) {
+          contrastTick.classList.remove('sidebar__icon--green');
+          contrastTick.classList.add('sidebar__icon--red');
+        }
+
+        if (
+          spelling_report !== undefined &&
+          spelling_report.test_result === 'fail'
+        ) {
+          spellingTick.classList.remove('sidebar__icon--green');
+          spellingTick.classList.add('sidebar__icon--red');
+        }
+
+        if (
+          grammar_report !== undefined &&
+          grammar_report.test_result === 'fail'
+        ) {
+          grammarTick.classList.remove('sidebar__icon--green');
+          grammarTick.classList.add('sidebar__icon--red');
+        }
+
+        if (image_report !== undefined && image_report.test_result === 'fail') {
+          imageTick.classList.remove('sidebar__icon--green');
+          imageTick.classList.add('sidebar__icon--red');
+        }
+
         imageName.innerText = image_name;
       } catch (err) {
         console.error(err);
@@ -199,7 +233,6 @@ if (testSelections) {
       screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(layout_report.report).forEach(x => {
-        console.log(x);
         // const html = `<li class="sidebar-defect__item">
         //               <button class="sidebar__btn">${x}</button>
         //               </li>
@@ -222,6 +255,7 @@ if (testSelections) {
 
       Object.keys(alignment_report).forEach(x => {
         var image_src = alignment_report[x];
+        alignmentTick.classList.add('sidebar__icon--red');
 
         count = count + 1;
         reportNum = 'report' + count;
@@ -247,11 +281,7 @@ if (testSelections) {
       screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(contrast_report.report).forEach(x => {
-        console.log(x);
-        console.log(contrast_report.report[x]);
-        console.log(contrast_report.report[x]);
         if (contrast_report.report[x].test === 'fail') {
-          contrastTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${contrast_report.report[x].num}</button>
                         </li>
@@ -277,11 +307,7 @@ if (testSelections) {
       screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(spelling_report.report).forEach(x => {
-        console.log(x);
-        console.log(spelling_report.report[x]);
-        console.log(spelling_report.report[x]);
         if (spelling_report.report[x].test === 'fail') {
-          spellingTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${spelling_report.report[x].num}</button>
                         </li>
@@ -309,11 +335,7 @@ if (testSelections) {
       screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(grammar_report.report).forEach(x => {
-        console.log(x);
-        console.log(grammar_report.report[x]);
-        console.log(grammar_report.report[x]);
         if (grammar_report.report[x].test === 'fail') {
-          grammarTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                         <button class="sidebar__btn">Issue: ${grammar_report.report[x].num}</button>
                         </li>
@@ -342,11 +364,7 @@ if (testSelections) {
       screenshot.insertAdjacentHTML('beforeend', html);
 
       Object.keys(image_report.report).forEach(x => {
-        console.log(x);
-        console.log(image_report.report[x]);
-        console.log(image_report.report[x]);
         if (image_report.report[x].test === 'fail') {
-          imageTick.classList.add('sidebar__icon--red');
           const html = `<li class="sidebar-defect__item">
                       <button class="sidebar__btn">Issue: ${image_report.report[x].num}</button>
                       </li>
