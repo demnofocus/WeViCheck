@@ -112,7 +112,7 @@ if (formTests) {
       });
 
       const data = await res.json();
-      if (data.status === 'success') location.assign('WeViCheck/detector.html');
+      if (data.status === 'success') location.assign('/detector.html');
     } catch (err) {
       console.error(err);
     }
